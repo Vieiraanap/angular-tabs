@@ -1,0 +1,27 @@
+::ng-deep .mat-tab-labels .mat-ripple.mat-tab-label.mat-focus-indicator.mat-tab-label-active.ng-star-inserted,
+.mat-tab-links .mat-tab-label-active {
+  font-weight: bold;
+  color: #3f50b5;
+  border: 1px solid transparent;
+  opacity: 100;
+}
+
+::ng-deep .mat-tab-links {
+  justify-content: space-around !important;
+}
+
+::ng-deep .mat-ink-bar{
+  width: 100%;
+}
+
+.tab-content {
+  padding-top: 20px;
+}
+
+@media (min-width:768px) {
+  ::ng-deep .mat-tab-labels .mat-ripple.mat-tab-label.mat-focus-indicator{
+    width: 100%;
+  }
+}
+
+

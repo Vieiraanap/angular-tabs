@@ -1,0 +1,39 @@
+
+<!-- show tabs without route -->
+<ng-container *ngIf="buildTabsByComponents()">
+  <mat-tab-group (focusChange)="tabChange($event.index)" [animationDuration]="animationDuration">
+    <mat-tab *ngFor="let content of contents" [disabled]="content.disabled">
+      <ng-template matTabLabel>
+        <!-- sets the tab title inside TabHeaderComponent  -->
+        <ng-container *ngTemplateOutlet="content.tabHeader.headerTemplate"></ng-container>
+      </ng-template>
+
+      <ng-template matTabContent>
+        <div class="tab-content">
+          <!-- sets the tab content inside TabContentComponent  -->
+          <ng-container *ngTemplateOutlet="content.tabContent"></ng-container>
+        </div>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>
+
+<!-- show tabs with route -->
+<ng-container *ngIf="buildTabsByRoutes()">
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a mat-tab-link
+      *ngFor="let route of routes.getTabList(); let i = index"
+      (click)="activeTabRoute = route"
+      (click)="tabChange(i)"
+      [active]="activeTabRoute == route"
+      [routerLink]="route.tabRoute">
+      {{ route.tabName }}
+    </a>
+  </nav>
+
+  <div class="tab-content">
+    <mat-tab-nav-panel #tabPanel>
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
+  </div>
+</ng-container>
