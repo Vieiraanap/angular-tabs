@@ -5,6 +5,7 @@ import { TabHeaderComponent } from './tab-header/tab-header.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { TabContentComponent } from './tab-content/tab-content.component';
+import { TabItemComponent } from './tab-item/tab-item.component';
 
 @NgModule({
   imports: [
@@ -15,12 +16,15 @@ import { TabContentComponent } from './tab-content/tab-content.component';
   declarations: [
     TabComponent,
     TabHeaderComponent,
-    TabContentComponent
+    TabContentComponent,
+    TabItemComponent
   ],
   exports: [
     TabComponent,
     TabHeaderComponent,
-    TabContentComponent
+    TabContentComponent,
+    TabItemComponent
+
   ]
 })
 export class TabModule { }

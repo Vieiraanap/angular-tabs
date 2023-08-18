@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, EventEmit
 import { Router } from '@angular/router';
 import { TabRoutes } from './models/tab-routes';
 import { ITabRoute } from './models/tab-route.interface';
-import { TabContentComponent } from './tab-content/tab-content.component';
+import { TabItemComponent } from './tab-item/tab-item.component';
 
 @Component({
   selector: 'tab',
@@ -15,7 +15,7 @@ export class TabComponent implements AfterViewInit {
   activeTabRoute: ITabRoute;
 
   // component that gets the displayed data
-	contents: TabContentComponent[] = [];
+	contents: TabItemComponent[] = [];
 
   // time transition between tabs buit by components
 	@Input() animationDuration: number = 0;
@@ -26,8 +26,8 @@ export class TabComponent implements AfterViewInit {
   // set the tab to change to
 	@Output() tabIndexChange: EventEmitter<number> = new EventEmitter();
 
-  // used to access the components inside TabContentComponent
-  @ContentChildren(TabContentComponent,{ descendants: true }) contentList!: QueryList<TabContentComponent>;
+  // used to access the components inside TabItemComponent
+  @ContentChildren(TabItemComponent,{ descendants: true }) contentList!: QueryList<TabItemComponent>;
 
 	constructor(
     private changeDetectorRef: ChangeDetectorRef,
@@ -37,7 +37,7 @@ export class TabComponent implements AfterViewInit {
 	ngAfterViewInit(): void {
     // set the list of tabs to be shown when buidTabsByComponents
 		this.contents = this.contentList.toArray();
-		this.contentList.changes.subscribe((value: QueryList<TabContentComponent>) => {
+		this.contentList.changes.subscribe((value: QueryList<TabItemComponent>) => {
 			this.contents = value.toArray();
 		});
 

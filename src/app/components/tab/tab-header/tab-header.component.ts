@@ -1,7 +1,7 @@
 import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-tab-header',
+  selector: 'tab-header',
   templateUrl: './tab-header.component.html',
   styleUrls: ['./tab-header.component.css']
 })
