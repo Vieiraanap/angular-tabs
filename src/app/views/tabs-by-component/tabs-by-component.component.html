@@ -1,0 +1,11 @@
+<main>
+  <h3>Tabs Buil by Component</h3>
+
+  <tab>
+    <tab-item *ngFor="let tab of tabsContent">
+      <tab-header title="{{ tab.title }}"></tab-header>
+      <tab-content>{{ tab.content }}</tab-content>
+    </tab-item>
+  </tab>
+</main>
+
