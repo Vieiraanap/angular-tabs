@@ -6,7 +6,7 @@ import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
   styleUrls: ['./tab-header.component.css']
 })
 export class TabHeaderComponent {
-  @ViewChild(TemplateRef) public headerTemplate!: TemplateRef<any>;
+  @ViewChild(TemplateRef) public headerTemplate!: TemplateRef<TabHeaderComponent>;
 	@Input() title: string = '';
 
   constructor() { }

@@ -15,7 +15,7 @@ export class TabComponent implements AfterViewInit {
   activeTabRoute: ITabRoute;
 
   // component that gets the displayed data
-	contents: TabItemComponent[] = [];
+	itens: TabItemComponent[] = [];
 
   // time transition between tabs buit by components
 	@Input() animationDuration: number = 0;
@@ -27,7 +27,7 @@ export class TabComponent implements AfterViewInit {
 	@Output() tabIndexChange: EventEmitter<number> = new EventEmitter();
 
   // used to access the components inside TabItemComponent
-  @ContentChildren(TabItemComponent,{ descendants: true }) contentList!: QueryList<TabItemComponent>;
+  @ContentChildren(TabItemComponent,{ descendants: true }) itemList!: QueryList<TabItemComponent>;
 
 	constructor(
     private changeDetectorRef: ChangeDetectorRef,
@@ -36,9 +36,9 @@ export class TabComponent implements AfterViewInit {
 
 	ngAfterViewInit(): void {
     // set the list of tabs to be shown when buidTabsByComponents
-		this.contents = this.contentList.toArray();
-		this.contentList.changes.subscribe((value: QueryList<TabItemComponent>) => {
-			this.contents = value.toArray();
+		this.itens = this.itemList.toArray();
+		this.itemList.changes.subscribe((value: QueryList<TabItemComponent>) => {
+			this.itens = value.toArray();
 		});
 
     // set the list of tabs to be shown when buidTabsByRoutes
@@ -76,12 +76,12 @@ export class TabComponent implements AfterViewInit {
 
   // checks if tabs will be buit by components
 	buildTabsByComponents(): boolean {
-		return (!(this.routes && this.routes.getTabList().length > 0) && (this.contentList && this.contentList.length > 0));
+		return (!(this.routes && this.routes.getTabList().length > 0) && (this.itemList && this.itemList.length > 0));
 	}
 
   // checks if tabs will be buit by routes
   buildTabsByRoutes(): boolean {
-		return (!(this.contentList && this.contentList.length > 0) && (this.routes && this.routes.getTabList().length > 0))
+		return (!(this.itemList && this.itemList.length > 0) && (this.routes && this.routes.getTabList().length > 0))
 	}
 
 }

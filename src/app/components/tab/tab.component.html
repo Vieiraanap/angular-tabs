@@ -2,16 +2,16 @@
 <!-- show tabs without route -->
 <ng-container *ngIf="buildTabsByComponents()">
   <mat-tab-group (focusChange)="tabChange($event.index)" [animationDuration]="animationDuration">
-    <mat-tab *ngFor="let content of contents" [disabled]="content.disabled">
+    <mat-tab *ngFor="let tabItem of itens" [disabled]="tabItem.disabled">
       <ng-template matTabLabel>
         <!-- sets the tab title inside TabHeaderComponent  -->
-        <ng-container *ngTemplateOutlet="content.tabHeader.headerTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="tabItem.tabHeader.headerTemplate"></ng-container>
       </ng-template>
 
       <ng-template matTabContent>
         <div class="tab-content">
           <!-- sets the tab content inside TabContentComponent  -->
-          <ng-container *ngTemplateOutlet="content.contentTemplate"></ng-container>
+          <ng-container *ngTemplateOutlet="tabItem.contentTemplate"></ng-container>
         </div>
       </ng-template>
     </mat-tab>
